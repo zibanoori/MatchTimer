@@ -27,6 +27,11 @@ function App() {
               0 : 0
             </div>
           </div>
+
+          <div className="text-center">
+            
+
+          </div>
         </div>
       </section>
     </main>
