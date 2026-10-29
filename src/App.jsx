@@ -23,6 +23,9 @@ function App() {
             <p className="text-xs uppercase tracking-widest text-slate-400">
               Score
             </p>
+            <div className="mt-2 text-4xl font-bold tabular-nums sm:text-5xl">
+              0 : 0
+            </div>
           </div>
         </div>
       </section>
