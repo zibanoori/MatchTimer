@@ -13,7 +13,10 @@ function App() {
         </header>
 
         <div className="grid grid-cols-3 items-center gap-3">
+<div className="text-center">
+<div className="text-5xl sm:text-6xl">IR</div>
 
+</div>
         </div>
       </section>
     </main>
