@@ -30,7 +30,7 @@ function App() {
 
           <div className="text-center">
             <div className="text-5xl sm:text-6xl">BR</div>
-
+            <h2 className="mt-4 text-lg font-semibold sm:text-xl">BRAZIL</h2>
           </div>
         </div>
       </section>
