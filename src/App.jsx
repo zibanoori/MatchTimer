@@ -11,6 +11,10 @@ function App() {
           <h1 className="mt-3 text-3xl font-bold sm:text-4xl">MatchTimer</h1>
           <p className="mt-3 text-sm text-slate-400">International Friendly</p>
         </header>
+
+        <div className="grid grid-cols-3 items-center gap-3">
+
+        </div>
       </section>
     </main>
   );
