@@ -18,6 +18,12 @@ function App() {
             <h2 className="mt-4 text-lg font-semibold sm:text-xl">IRAN</h2>
             <p className="mt-1 text-xs text-slate-400 ">HOME</p>
           </div>
+
+          <div className="text-center">
+            <p className="text-xs uppercase tracking-widest text-slate-400">
+              Score
+            </p>
+          </div>
         </div>
       </section>
     </main>
