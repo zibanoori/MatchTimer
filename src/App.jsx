@@ -29,7 +29,7 @@ function App() {
           </div>
 
           <div className="text-center">
-            
+            <div className="text-5xl sm:text-6xl">BR</div>
 
           </div>
         </div>
