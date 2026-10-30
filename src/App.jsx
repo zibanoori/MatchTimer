@@ -1,8 +1,9 @@
 import "./App.css";
-
+import { FaRegClock } from "react-icons/fa";
 function App() {
   return (
     <main className="min-h-screen bg-slate-950 text-white flex items-center justify-center p-4">
+      <FaRegClock className="text-emerald-400 text-2xl" />
       <section className="w-full max-w-xl rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-2xl sm:p-10">
         <header className="mb-10 text-center">
           <p className="text-sm font-medium uppercase tracking-[0.3em] text-emerald-400">
@@ -31,9 +32,11 @@ function App() {
           <div className="text-center">
             <div className="text-5xl sm:text-6xl">BR</div>
             <h2 className="mt-4 text-lg font-semibold sm:text-xl">BRAZIL</h2>
-             <p className="mt-1 text-xs text-slate-400">AWAY</p>
+            <p className="mt-1 text-xs text-slate-400">AWAY</p>
           </div>
         </div>
+
+        <div className="my-10 rounded-2xl border border-slate-800 bg-slate-950 p-6 text-center"></div>
       </section>
     </main>
   );
