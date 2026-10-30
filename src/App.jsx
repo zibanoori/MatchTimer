@@ -51,6 +51,13 @@ function App() {
             >
               +
             </button>
+
+            <button
+              type="button"
+              onClick={() => setIranScore((prev) => Math.max(0, prev - 1))}
+            >
+              -
+            </button>
           </div>
 
           <div className="text-center">
