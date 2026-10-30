@@ -40,6 +40,9 @@ function App() {
           <p className="text-xs font-medium uppercase tracking-widest sm:text-base">
             Match Time
           </p>
+          <p className="mt-3 font-mono text-5xl font-bold tabular-nums sm:text-6xl">
+            00:00
+          </p>
         </div>
       </section>
     </main>
