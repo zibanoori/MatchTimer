@@ -74,26 +74,25 @@ function App() {
           </div>
 
           <div className="text-center">
-            <div className="text-5xl sm:text-6xl">BR</div>
-            <h2 className="mt-4 text-lg font-semibold sm:text-xl">BRAZIL</h2>
-            <p className="mt-1 text-xs text-slate-400">AWAY</p>
+            <TeamScore teamName="BRAZIL" score={brazilScore} />
 
-            <button
-              type="button"
-              onClick={() => setBrazilScore((prev) => prev + 1)}
-            >
-              +
-            </button>
+            <div className="mt-4 flex justify-center gap-2">
+              <button
+                type="button"
+                onClick={() => setBrazilScore((prev) => prev + 1)}
+              >
+                +
+              </button>
 
-            <button
-              type="button"
-              onClick={() => setBrazilScore((prev) => Math.max(0, prev - 1))}
-            >
-              -
-            </button>
+              <button
+                type="button"
+                onClick={() => setBrazilScore((prev) => Math.max(0, prev - 1))}
+              >
+                -
+              </button>
+            </div>
           </div>
         </div>
-
         <div className="my-10 rounded-2xl border border-slate-800 bg-slate-950 p-6 text-center">
           <p className="text-xs font-medium uppercase tracking-widest sm:text-base">
             Match Time
