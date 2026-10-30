@@ -36,7 +36,11 @@ function App() {
           </div>
         </div>
 
-        <div className="my-10 rounded-2xl border border-slate-800 bg-slate-950 p-6 text-center"></div>
+        <div className="my-10 rounded-2xl border border-slate-800 bg-slate-950 p-6 text-center">
+          <p className="text-xs font-medium uppercase tracking-widest sm:text-base">
+            Match Time
+          </p>
+        </div>
       </section>
     </main>
   );
