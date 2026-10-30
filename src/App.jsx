@@ -25,6 +25,8 @@ function App() {
   }, [isRunning]);
 
   const handleReset = () => {
+    setIranScore(0);
+    setBrazilScore(0);
     setSeconds(0);
     setIsRunning(false);
   };
