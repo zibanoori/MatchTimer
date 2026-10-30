@@ -2,10 +2,12 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [seconds, setSeconds] = useState(0);
+  const [seconds, setSeconds] = useState(125);
 
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
+  const formattedTime = `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
+
   return (
     <main className="min-h-screen bg-slate-950 text-white flex items-center justify-center p-4">
       <section className="w-full max-w-xl rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-2xl sm:p-10">
@@ -45,7 +47,7 @@ function App() {
             Match Time
           </p>
           <p className="mt-3 font-mono text-5xl font-bold tabular-nums sm:text-6xl">
-            {seconds}
+            {formattedTime}
           </p>
           <p className="mt-3 text-xs text-slate-500">FIRST HALF</p>
         </div>
