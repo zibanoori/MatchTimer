@@ -2,11 +2,23 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
-  const [seconds, setSeconds] = useState(125);
+  const [seconds, setSeconds] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
 
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
+
   const formattedTime = `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSeconds((prev) => prev + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   return (
     <main className="min-h-screen bg-slate-950 text-white flex items-center justify-center p-4">
@@ -23,7 +35,7 @@ function App() {
           <div className="text-center">
             <div className="text-5xl sm:text-6xl">IR</div>
             <h2 className="mt-4 text-lg font-semibold sm:text-xl">IRAN</h2>
-            <p className="mt-1 text-xs text-slate-400 ">HOME</p>
+            <p className="mt-1 text-xs text-slate-400">HOME</p>
           </div>
 
           <div className="text-center">
@@ -46,9 +58,11 @@ function App() {
           <p className="text-xs font-medium uppercase tracking-widest sm:text-base">
             Match Time
           </p>
+
           <p className="mt-3 font-mono text-5xl font-bold tabular-nums sm:text-6xl">
             {formattedTime}
           </p>
+
           <p className="mt-3 text-xs text-slate-500">FIRST HALF</p>
         </div>
 
