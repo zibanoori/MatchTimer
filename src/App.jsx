@@ -13,6 +13,28 @@ function App() {
 
   const formattedTime = `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
 
+  const teams = [
+    { id: 1, name: "IRAN", score: iranScore },
+    { id: 2, name: "BRAZIL", score: brazilScore },
+  ];
+
+  const teams = [
+    {
+      id: 1,
+      name: "IRAN",
+      score: iranScore,
+      onIncrease: () => setIranScore((prev) => prev + 1),
+      onDecrease: () => setIranScore((prev) => Math.max(0, prev - 1)),
+    },
+    {
+      id: 2,
+      name: "BRAZIL",
+      score: brazilScore,
+      onIncrease: () => setBrazilScore((prev) => prev + 1),
+      onDecrease: () => setBrazilScore((prev) => Math.max(0, prev - 1)),
+    },
+  ];
+
   useEffect(() => {
     if (!isRunning) return;
 
