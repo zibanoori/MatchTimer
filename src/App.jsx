@@ -11,6 +11,8 @@ function App() {
   const formattedTime = `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
 
   useEffect(() => {
+    if (!isRunning) return;
+
     const timer = setInterval(() => {
       setSeconds((prev) => prev + 1);
     }, 1000);
@@ -18,7 +20,7 @@ function App() {
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  }, [isRunning]);
 
   return (
     <main className="min-h-screen bg-slate-950 text-white flex items-center justify-center p-4">
