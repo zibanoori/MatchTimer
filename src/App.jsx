@@ -80,6 +80,13 @@ function App() {
             >
               +
             </button>
+
+            <button
+              type="button"
+              onClick={() => setBrazilScore((prev) => Math.max(0, prev - 1))}
+            >
+              -
+            </button>
           </div>
         </div>
 
