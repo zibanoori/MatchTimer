@@ -63,23 +63,12 @@ function App() {
           </div>
 
           <div className="text-center">
-            <TeamScore teamName="BRAZIL" score={brazilScore} />
-
-            <div className="mt-4 flex justify-center gap-2">
-              <button
-                type="button"
-                onClick={() => setBrazilScore((prev) => prev + 1)}
-              >
-                +
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setBrazilScore((prev) => Math.max(0, prev - 1))}
-              >
-                -
-              </button>
-            </div>
+            <TeamScore
+              teamName="BRAZIL"
+              score={brazilScore}
+              onIncrease={() => setBrazilScore((prev) => prev + 1)}
+              onDecrease={() => setBrazilScore((prev) => Math.max(0, prev - 1))}
+            />
           </div>
         </div>
         <div className="my-10 rounded-2xl border border-slate-800 bg-slate-950 p-6 text-center">
