@@ -45,6 +45,15 @@ function App() {
           </p>
           <p className="mt-3 text-xs text-slate-500">FIRST HALF</p>
         </div>
+
+        <div className="flex justify-center gap-3">
+          <button
+            type="button"
+            className="rounded-xl bg-emerald-500 px-7 py-3 font-semibold text-slate-200 transition hover:bg-slate-800"
+          >
+            Reset
+          </button>
+        </div>
       </section>
     </main>
   );
