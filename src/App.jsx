@@ -66,6 +66,13 @@ function App() {
             <div className="text-5xl sm:text-6xl">BR</div>
             <h2 className="mt-4 text-lg font-semibold sm:text-xl">BRAZIL</h2>
             <p className="mt-1 text-xs text-slate-400">AWAY</p>
+
+            <button
+              type="button"
+              onClick={() => setBrazilScore((prev) => prev + 1)}
+            >
+              +
+            </button>
           </div>
         </div>
 
