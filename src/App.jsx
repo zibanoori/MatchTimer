@@ -22,6 +22,11 @@ function App() {
     };
   }, [isRunning]);
 
+  const handleReset = () => {
+    setSeconds(0);
+    setIsRunning(false);
+  };
+
   return (
     <main className="min-h-screen bg-slate-950 text-white flex items-center justify-center p-4">
       <section className="w-full max-w-xl rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-2xl sm:p-10">
@@ -71,9 +76,18 @@ function App() {
         <div className="flex justify-center gap-3">
           <button
             type="button"
-            className="rounded-xl bg-emerald-500 px-7 py-3 font-semibold text-slate-200 transition hover:bg-slate-800"
+            onClick={handleReset}
+            className="rounded-xl bg-slate-700 px-7 py-3 font-semibold text-white transition hover:bg-slate-800"
           >
             Reset
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setIsRunning((prev) => !prev)}
+            className="rounded-xl bg-emerald-500 px-7 py-3 font-semibold text-white transition hover:bg-emerald-600"
+          >
+            {isRunning ? "Pause" : "Start"}
           </button>
         </div>
 
