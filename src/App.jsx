@@ -42,7 +42,7 @@ function App() {
             Match Time
           </p>
           <p className="mt-3 font-mono text-5xl font-bold tabular-nums sm:text-6xl">
-            00:00
+            {seconds}
           </p>
           <p className="mt-3 text-xs text-slate-500">FIRST HALF</p>
         </div>
