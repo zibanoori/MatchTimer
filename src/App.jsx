@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import TeamScore from "./components/TeamScore";
 import "./App.css";
 
 function App() {
