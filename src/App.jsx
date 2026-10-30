@@ -52,7 +52,7 @@ function App() {
               Score
             </p>
             <div className="mt-2 text-4xl font-bold tabular-nums sm:text-5xl">
-              0 : 0
+              {iranScore} : {brazilScore}
             </div>
           </div>
 
