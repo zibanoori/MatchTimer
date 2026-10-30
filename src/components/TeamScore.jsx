@@ -1,4 +1,4 @@
-function TeamScore({ teamName, score }) {
+function TeamScore({ teamName, score, onIncrease, onDecrease }) {
   return (
     <div>
       <h2>{teamName}</h2>
