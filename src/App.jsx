@@ -45,23 +45,12 @@ function App() {
 
         <div className="grid grid-cols-3 items-center gap-3">
           <div className="text-center">
-            <TeamScore teamName="IRAN" score={iranScore} />
-
-            <div className="mt-4 flex justify-center gap-2">
-              <button
-                type="button"
-                onClick={() => setIranScore((prev) => prev + 1)}
-              >
-                +
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setIranScore((prev) => Math.max(0, prev - 1))}
-              >
-                -
-              </button>
-            </div>
+            <TeamScore
+              teamName="IRAN"
+              score={iranScore}
+              onIncrease={() => setIranScore((prev) => prev + 1)}
+              onDecrease={() => setIranScore((prev) => Math.max(0, prev - 1))}
+            />
           </div>
 
           <div className="text-center">
