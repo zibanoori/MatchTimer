@@ -14,11 +14,6 @@ function App() {
   const formattedTime = `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
 
   const teams = [
-    { id: 1, name: "IRAN", score: iranScore },
-    { id: 2, name: "BRAZIL", score: brazilScore },
-  ];
-
-  const teams = [
     {
       id: 1,
       name: "IRAN",
@@ -66,16 +61,21 @@ function App() {
         </header>
 
         <div className="grid grid-cols-3 items-center gap-3">
-          <div className="text-center">
-            <TeamScore
-              teamName="IRAN"
-              score={iranScore}
-              onIncrease={() => setIranScore((prev) => prev + 1)}
-              onDecrease={() => setIranScore((prev) => Math.max(0, prev - 1))}
-            />
-          </div>
+          {teams.map((team, index) => (
+            <div
+              key={team.id}
+              className={`text-center ${index === 1 ? "col-start-3" : "col-start-1"}`}
+            >
+              <TeamScore
+                teamName={team.name}
+                score={team.score}
+                onIncrease={team.onIncrease}
+                onDecrease={team.onDecrease}
+              />
+            </div>
+          ))}
 
-          <div className="text-center">
+          <div className="col-start-2 row-start-1 text-center">
             <p className="text-xs uppercase tracking-widest text-slate-400">
               Score
             </p>
@@ -83,16 +83,8 @@ function App() {
               {iranScore} : {brazilScore}
             </div>
           </div>
-
-          <div className="text-center">
-            <TeamScore
-              teamName="BRAZIL"
-              score={brazilScore}
-              onIncrease={() => setBrazilScore((prev) => prev + 1)}
-              onDecrease={() => setBrazilScore((prev) => Math.max(0, prev - 1))}
-            />
-          </div>
         </div>
+
         <div className="my-10 rounded-2xl border border-slate-800 bg-slate-950 p-6 text-center">
           <p className="text-xs font-medium uppercase tracking-widest sm:text-base">
             Match Time
