@@ -3,6 +3,9 @@ import "./App.css";
 
 function App() {
   const [seconds, setSeconds] = useState(0);
+
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
   return (
     <main className="min-h-screen bg-slate-950 text-white flex items-center justify-center p-4">
       <section className="w-full max-w-xl rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-2xl sm:p-10">
