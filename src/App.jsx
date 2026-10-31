@@ -5,8 +5,12 @@ import "./App.css";
 function App() {
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
-  const [iranScore, setIranScore] = useState(0);
-  const [brazilScore, setBrazilScore] = useState(0);
+  const [iranScore, setIranScore] = useState(() => {
+    return Number(localStorage.getItem("iranScore") ?? 0);
+  });
+  const [brazilScore, setBrazilScore] = useState(() => {
+    return Number(localStorage.getItem("brazilScore") ?? 0);
+  });
 
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
