@@ -46,6 +46,11 @@ function App() {
     };
   }, [isRunning]);
 
+  useEffect(() => {
+    localStorage.setItem("iranScore", String(iranScore));
+    localStorage.setItem("brazilScore", String(brazilScore));
+  }, [iranScore, brazilScore]);
+
   const handleReset = () => {
     setIranScore(0);
     setBrazilScore(0);
