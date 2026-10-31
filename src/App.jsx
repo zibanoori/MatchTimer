@@ -3,7 +3,9 @@ import TeamScore from "./components/TeamScore";
 import "./App.css";
 
 function App() {
-  const [seconds, setSeconds] = useState(0);
+  const [seconds, setSeconds] = useState(() => {
+    return Number(localStorage.getItem("seconds") ?? 0);
+  });
   const [isRunning, setIsRunning] = useState(false);
   const [iranScore, setIranScore] = useState(() => {
     return Number(localStorage.getItem("iranScore") ?? 0);
@@ -51,6 +53,9 @@ function App() {
     localStorage.setItem("brazilScore", String(brazilScore));
   }, [iranScore, brazilScore]);
 
+  useEffect(() => {
+    localStorage.setItem("seconds", String(seconds));
+  }, [seconds]);
   const handleReset = () => {
     setIranScore(0);
     setBrazilScore(0);
