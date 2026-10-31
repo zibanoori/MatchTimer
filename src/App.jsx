@@ -21,10 +21,6 @@ function App() {
     return Number(localStorage.getItem("brazilScore") ?? 0);
   });
 
-  const [matchInfo, setMatchInfo] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
   const handleFocus = () => {
     eventInputRef.current.focus();
   };
@@ -49,7 +45,7 @@ function App() {
     {
       id: 1,
       name: "IRAN",
-      flag: "🇮🇷",
+      flag: "https://flagcdn.com/w80/ir.png",
       score: iranScore,
       onIncrease: () => setIranScore((prev) => prev + 1),
       onDecrease: () => setIranScore((prev) => Math.max(0, prev - 1)),
@@ -57,35 +53,12 @@ function App() {
     {
       id: 2,
       name: "BRAZIL",
-      flag: "🇧🇷",
+      flag: "https://flagcdn.com/w80/br.png",
       score: brazilScore,
       onIncrease: () => setBrazilScore((prev) => prev + 1),
       onDecrease: () => setBrazilScore((prev) => Math.max(0, prev - 1)),
     },
   ];
-
-  useEffect(() => {
-    const getMatchInfo = async () => {
-      try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/posts/1",
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-
-        const data = await response.json();
-        setMatchInfo(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getMatchInfo();
-  }, []);
 
   useEffect(() => {
     if (!isRunning) return;
@@ -165,39 +138,16 @@ function App() {
           <p className="mt-3 text-sm text-slate-400">International Friendly</p>
         </header>
 
-        <div className="my-6 rounded-xl bg-slate-800 p-4">
-          {loading && <p>Loading...</p>}
-
-          {error && <p className="text-red-400">{error}</p>}
-
-          {matchInfo && (
-            <>
-              <p className="mb-2 text-xs uppercase tracking-widest text-emerald-400">
-                API Practice
-              </p>
-
-              <h2 className="font-bold">{matchInfo.title}</h2>
-
-              <p className="mt-2 text-sm text-slate-300">{matchInfo.body}</p>
-            </>
-          )}
-        </div>
-
         <div className="grid grid-cols-3 items-center gap-3">
-          {teams.map((team, index) => (
-            <div
+          {teams.map((team) => (
+            <TeamScore
               key={team.id}
-              className={`text-center ${
-                index === 1 ? "col-start-3" : "col-start-1"
-              }`}
-            >
-              <TeamScore
-                teamName={team.name}
-                score={team.score}
-                onIncrease={team.onIncrease}
-                onDecrease={team.onDecrease}
-              />
-            </div>
+              teamName={team.name}
+              flag={team.flag}
+              score={team.score}
+              onIncrease={team.onIncrease}
+              onDecrease={team.onDecrease}
+            />
           ))}
 
           <div className="col-start-2 row-start-1 text-center">
