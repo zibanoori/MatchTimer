@@ -49,6 +49,7 @@ function App() {
     {
       id: 1,
       name: "IRAN",
+      flag: "🇮🇷",
       score: iranScore,
       onIncrease: () => setIranScore((prev) => prev + 1),
       onDecrease: () => setIranScore((prev) => Math.max(0, prev - 1)),
@@ -56,6 +57,7 @@ function App() {
     {
       id: 2,
       name: "BRAZIL",
+      flag: "🇧🇷",
       score: brazilScore,
       onIncrease: () => setBrazilScore((prev) => prev + 1),
       onDecrease: () => setBrazilScore((prev) => Math.max(0, prev - 1)),
