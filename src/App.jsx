@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import TeamScore from "./components/TeamScore";
-
 import "./App.css";
 
 function App() {
   const [seconds, setSeconds] = useState(() => {
     return Number(localStorage.getItem("seconds") ?? 0);
   });
+  const eventInputRef = useRef(null);
   const [isRunning, setIsRunning] = useState(false);
   const [iranScore, setIranScore] = useState(() => {
     return Number(localStorage.getItem("iranScore") ?? 0);
@@ -67,6 +67,12 @@ function App() {
   return (
     <main className="min-h-screen bg-slate-950 text-white flex items-center justify-center p-4">
       <section className="w-full max-w-xl rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-2xl sm:p-10">
+        <input
+          ref={eventInputRef}
+          type="text"
+          placeholder="Write a match event..."
+        />
+        ref={eventInputRef}
         <header className="mb-10 text-center">
           <p className="text-sm font-medium uppercase tracking-[0.3em] text-emerald-400">
             Live Match
