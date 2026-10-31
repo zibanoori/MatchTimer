@@ -3,14 +3,22 @@ import TeamScore from "./components/TeamScore";
 import "./App.css";
 
 function App() {
+  const eventInputRef = useRef(null);
+
+  const handleFocus = () => {
+    eventInputRef.current.focus();
+  };
+
   const [seconds, setSeconds] = useState(() => {
     return Number(localStorage.getItem("seconds") ?? 0);
   });
-  const eventInputRef = useRef(null);
+
   const [isRunning, setIsRunning] = useState(false);
+
   const [iranScore, setIranScore] = useState(() => {
     return Number(localStorage.getItem("iranScore") ?? 0);
   });
+
   const [brazilScore, setBrazilScore] = useState(() => {
     return Number(localStorage.getItem("brazilScore") ?? 0);
   });
@@ -18,8 +26,9 @@ function App() {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
 
-  const formattedTime = `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
-
+  const formattedTime = `${String(minutes).padStart(2, "0")}:${String(
+    remainingSeconds,
+  ).padStart(2, "0")}`;
   const teams = [
     {
       id: 1,
@@ -57,6 +66,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem("seconds", String(seconds));
   }, [seconds]);
+
   const handleReset = () => {
     setIranScore(0);
     setBrazilScore(0);
@@ -67,16 +77,30 @@ function App() {
   return (
     <main className="min-h-screen bg-slate-950 text-white flex items-center justify-center p-4">
       <section className="w-full max-w-xl rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-2xl sm:p-10">
-        <input
-          ref={eventInputRef}
-          type="text"
-          placeholder="Write a match event..."
-        />
+        <div className="mb-6 flex gap-2">
+          <input
+            ref={eventInputRef}
+            type="text"
+            placeholder="Write a match event..."
+            className="min-w-0 flex-1 rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none focus:border-emerald-500"
+          />
+
+          <button
+            type="button"
+            onClick={handleFocus}
+            className="rounded-xl bg-emerald-500 px-4 py-3 font-semibold text-white hover:bg-emerald-600"
+          >
+            Focus
+          </button>
+        </div>
+
         <header className="mb-10 text-center">
           <p className="text-sm font-medium uppercase tracking-[0.3em] text-emerald-400">
             Live Match
           </p>
+
           <h1 className="mt-3 text-3xl font-bold sm:text-4xl">MatchTimer</h1>
+
           <p className="mt-3 text-sm text-slate-400">International Friendly</p>
         </header>
 
@@ -84,7 +108,9 @@ function App() {
           {teams.map((team, index) => (
             <div
               key={team.id}
-              className={`text-center ${index === 1 ? "col-start-3" : "col-start-1"}`}
+              className={`text-center ${
+                index === 1 ? "col-start-3" : "col-start-1"
+              }`}
             >
               <TeamScore
                 teamName={team.name}
@@ -99,6 +125,7 @@ function App() {
             <p className="text-xs uppercase tracking-widest text-slate-400">
               Score
             </p>
+
             <div className="mt-2 text-4xl font-bold tabular-nums sm:text-5xl">
               {iranScore} : {brazilScore}
             </div>
