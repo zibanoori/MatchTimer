@@ -72,7 +72,6 @@ function App() {
           type="text"
           placeholder="Write a match event..."
         />
-        ref={eventInputRef}
         <header className="mb-10 text-center">
           <p className="text-sm font-medium uppercase tracking-[0.3em] text-emerald-400">
             Live Match
