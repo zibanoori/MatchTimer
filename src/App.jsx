@@ -4,7 +4,9 @@ import "./App.css";
 
 function App() {
   const eventInputRef = useRef(null);
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState(() => {
+    return JSON.parse(localStorage.getItem("events") ?? "[]");
+  });
   const [seconds, setSeconds] = useState(() => {
     return Number(localStorage.getItem("seconds") ?? 0);
   });
@@ -76,6 +78,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem("seconds", String(seconds));
   }, [seconds]);
+
+  useEffect(() => {
+    localStorage.setItem("events", JSON.stringify(events));
+  }, [events]);
 
   const handleReset = () => {
     setIranScore(0);
