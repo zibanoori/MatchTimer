@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,css,html}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,css,html}\""
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
