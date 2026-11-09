@@ -4,9 +4,11 @@ import './App.css'
 
 function App() {
   const eventInputRef = useRef(null)
+
   const [events, setEvents] = useState(() => {
     return JSON.parse(localStorage.getItem('events') ?? '[]')
   })
+
   const [seconds, setSeconds] = useState(() => {
     return Number(localStorage.getItem('seconds') ?? 0)
   })
@@ -68,9 +70,7 @@ function App() {
       setSeconds((prev) => prev + 1)
     }, 1000)
 
-    return () => {
-      clearInterval(timer)
-    }
+    return () => clearInterval(timer)
   }, [isRunning])
 
   useEffect(() => {
@@ -94,8 +94,13 @@ function App() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white flex items-center justify-center p-4">
+    <main className="min-h-screen bg-slate-950 text-white flex flex-col items-center justify-center p-4">
       <section className="w-full max-w-xl rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-2xl sm:p-10">
+        <img
+          src={`${import.meta.env.BASE_URL}favicon.ico`}
+          alt="MatchTimer Logo"
+          className="mx-auto mb-5 h-20 w-20 object-contain"
+        />
         <div className="mb-4 flex gap-2">
           <input
             ref={eventInputRef}
