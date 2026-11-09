@@ -31,7 +31,7 @@ function TeamScore({ teamName, flag, score, onIncrease, onDecrease }) {
         </button>
       </div>
     </div>
-  );
+  )
 }
 
-export default TeamScore;
+export default TeamScore
