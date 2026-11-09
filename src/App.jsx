@@ -1,14 +1,8 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import TeamScore from './components/TeamScore'
 import './App.css'
 
 function App() {
-  const eventInputRef = useRef(null)
-
-  const [events, setEvents] = useState(() => {
-    return JSON.parse(localStorage.getItem('events') ?? '[]')
-  })
-
   const [seconds, setSeconds] = useState(() => {
     return Number(localStorage.getItem('seconds') ?? 0)
   })
@@ -22,19 +16,6 @@ function App() {
   const [brazilScore, setBrazilScore] = useState(() => {
     return Number(localStorage.getItem('brazilScore') ?? 0)
   })
-
-  const handleFocus = () => {
-    eventInputRef.current.focus()
-  }
-
-  const handleAddEvent = () => {
-    const eventText = eventInputRef.current.value.trim()
-
-    if (!eventText) return
-
-    setEvents((prev) => [...prev, eventText])
-    eventInputRef.current.value = ''
-  }
 
   const minutes = Math.floor(seconds / 60)
   const remainingSeconds = seconds % 60
@@ -82,10 +63,6 @@ function App() {
     localStorage.setItem('seconds', String(seconds))
   }, [seconds])
 
-  useEffect(() => {
-    localStorage.setItem('events', JSON.stringify(events))
-  }, [events])
-
   const handleReset = () => {
     setIranScore(0)
     setBrazilScore(0)
@@ -97,7 +74,7 @@ function App() {
     <main
       className="min-h-screen bg-cover bg-center bg-fixed text-white flex flex-col items-center justify-center p-4"
       style={{
-        backgroundImage: `linear-gradient(rgba(2, 8, 23, 0.25), rgba(2, 8, 23, 0.35)), url(${import.meta.env.BASE_URL}stadium1.webp)`,
+        backgroundImage: `linear-gradient(rgba(2, 8, 23, 0.25), rgba(2, 8, 23, 0.35)), url(${import.meta.env.BASE_URL}stadium.png)`,
       }}
     >
       <section className="w-full max-w-xl rounded-3xl border border-slate-700/70 bg-slate-900/85 p-6 shadow-2xl backdrop-blur-md sm:p-10">
@@ -106,15 +83,6 @@ function App() {
           alt="MatchTimer Logo"
           className="mx-auto mb-5 h-20 w-20 object-contain"
         />
-
-        <div className="mb-6 space-y-2">
-          {events.map((event, index) => (
-            <p key={index} className="rounded-lg bg-slate-800 p-3 text-sm">
-              {event}
-            </p>
-          ))}
-        </div>
-
         <header className="mb-10 text-center">
           <p className="text-sm font-medium uppercase tracking-[0.3em] text-emerald-400">
             Live Match
@@ -124,7 +92,6 @@ function App() {
 
           <p className="mt-3 text-sm text-slate-400">International Friendly</p>
         </header>
-
         <div className="grid grid-cols-3 items-center gap-3">
           {teams.map((team) => (
             <TeamScore
@@ -145,8 +112,7 @@ function App() {
             </div>
           </div>
         </div>
-
-        <div className="my-10 rounded-2xl border border-slate-800 bg-slate-950 p-6 text-center">
+        <div className="my-10 rounded-2xl border border-slate-800 bg-slate-950/80 p-6 text-center">
           <p className="text-xs font-medium uppercase tracking-widest sm:text-base">Match Time</p>
 
           <p className="mt-3 font-mono text-5xl font-bold tabular-nums sm:text-6xl">
@@ -155,7 +121,6 @@ function App() {
 
           <p className="mt-3 text-xs text-slate-500">FIRST HALF</p>
         </div>
-
         <div className="flex justify-center gap-3">
           <button
             type="button"
@@ -173,7 +138,6 @@ function App() {
             {isRunning ? 'Pause' : 'Start'}
           </button>
         </div>
-
         <footer className="mt-8 border-t border-slate-800 pt-5 text-center text-slate-500">
           Built with React & Tailwind CSS
         </footer>
