@@ -74,7 +74,7 @@ function App() {
     <main
       className="min-h-screen bg-cover bg-center bg-fixed text-white flex flex-col items-center justify-center p-4"
       style={{
-        backgroundImage: `linear-gradient(rgba(2, 8, 23, 0.25), rgba(2, 8, 23, 0.35)), url(${import.meta.env.BASE_URL}stadium.png)`,
+        backgroundImage: `linear-gradient(rgba(2, 8, 23, 0.25), rgba(2, 8, 23, 0.35)), url(${import.meta.env.BASE_URL}stadium1.webp)`,
       }}
     >
       <section className="w-full max-w-xl rounded-3xl border border-slate-700/70 bg-slate-900/85 p-6 shadow-2xl backdrop-blur-md sm:p-10">
