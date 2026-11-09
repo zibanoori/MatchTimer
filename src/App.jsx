@@ -94,37 +94,18 @@ function App() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white flex flex-col items-center justify-center p-4">
-      <section className="w-full max-w-xl rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-2xl sm:p-10">
+    <main
+      className="min-h-screen bg-cover bg-center bg-fixed text-white flex flex-col items-center justify-center p-4"
+      style={{
+        backgroundImage: `linear-gradient(rgba(2, 8, 23, 0.25), rgba(2, 8, 23, 0.35)), url(${import.meta.env.BASE_URL}stadium1.webp)`,
+      }}
+    >
+      <section className="w-full max-w-xl rounded-3xl border border-slate-700/70 bg-slate-900/85 p-6 shadow-2xl backdrop-blur-md sm:p-10">
         <img
           src={`${import.meta.env.BASE_URL}favicon.ico`}
           alt="MatchTimer Logo"
           className="mx-auto mb-5 h-20 w-20 object-contain"
         />
-        <div className="mb-4 flex gap-2">
-          <input
-            ref={eventInputRef}
-            type="text"
-            placeholder="Write a match event..."
-            className="min-w-0 flex-1 rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none focus:border-emerald-500"
-          />
-
-          <button
-            type="button"
-            onClick={handleFocus}
-            className="rounded-xl bg-slate-700 px-4 py-3 font-semibold text-white hover:bg-slate-600"
-          >
-            Focus
-          </button>
-
-          <button
-            type="button"
-            onClick={handleAddEvent}
-            className="rounded-xl bg-emerald-500 px-4 py-3 font-semibold text-white hover:bg-emerald-600"
-          >
-            Add Event
-          </button>
-        </div>
 
         <div className="mb-6 space-y-2">
           {events.map((event, index) => (
