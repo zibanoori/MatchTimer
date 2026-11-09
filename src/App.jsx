@@ -46,7 +46,7 @@ function App() {
     {
       id: 1,
       name: 'IRAN',
-      flag: '/MatchTimer/flags/iran.png',
+      flag: `${import.meta.env.BASE_URL}flags/ir.png`,
       score: iranScore,
       onIncrease: () => setIranScore((prev) => prev + 1),
       onDecrease: () => setIranScore((prev) => Math.max(0, prev - 1)),
@@ -54,7 +54,7 @@ function App() {
     {
       id: 2,
       name: 'BRAZIL',
-      flag: '/MatchTimer/flags/brazil.png',
+      flag: `${import.meta.env.BASE_URL}flags/br.png`,
       score: brazilScore,
       onIncrease: () => setBrazilScore((prev) => prev + 1),
       onDecrease: () => setBrazilScore((prev) => Math.max(0, prev - 1)),
