@@ -1,96 +1,97 @@
-import { useState, useEffect, useRef } from "react";
-import TeamScore from "./components/TeamScore";
-import "./App.css";
+import { useState, useEffect, useRef } from 'react'
+import TeamScore from './components/TeamScore'
+import './App.css'
 
 function App() {
-  const eventInputRef = useRef(null);
+  const eventInputRef = useRef(null)
   const [events, setEvents] = useState(() => {
-    return JSON.parse(localStorage.getItem("events") ?? "[]");
-  });
+    return JSON.parse(localStorage.getItem('events') ?? '[]')
+  })
   const [seconds, setSeconds] = useState(() => {
-    return Number(localStorage.getItem("seconds") ?? 0);
-  });
+    return Number(localStorage.getItem('seconds') ?? 0)
+  })
 
-  const [isRunning, setIsRunning] = useState(false);
+  const [isRunning, setIsRunning] = useState(false)
 
   const [iranScore, setIranScore] = useState(() => {
-    return Number(localStorage.getItem("iranScore") ?? 0);
-  });
+    return Number(localStorage.getItem('iranScore') ?? 0)
+  })
 
   const [brazilScore, setBrazilScore] = useState(() => {
-    return Number(localStorage.getItem("brazilScore") ?? 0);
-  });
+    return Number(localStorage.getItem('brazilScore') ?? 0)
+  })
 
   const handleFocus = () => {
-    eventInputRef.current.focus();
-  };
+    eventInputRef.current.focus()
+  }
 
   const handleAddEvent = () => {
-    const eventText = eventInputRef.current.value.trim();
+    const eventText = eventInputRef.current.value.trim()
 
-    if (!eventText) return;
+    if (!eventText) return
 
-    setEvents((prev) => [...prev, eventText]);
-    eventInputRef.current.value = "";
-  };
+    setEvents((prev) => [...prev, eventText])
+    eventInputRef.current.value = ''
+  }
 
-  const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = seconds % 60;
+  const minutes = Math.floor(seconds / 60)
+  const remainingSeconds = seconds % 60
 
-  const formattedTime = `${String(minutes).padStart(2, "0")}:${String(
-    remainingSeconds,
-  ).padStart(2, "0")}`;
+  const formattedTime = `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(
+    2,
+    '0'
+  )}`
 
   const teams = [
     {
       id: 1,
-      name: "IRAN",
-      flag: "https://flagcdn.com/w80/ir.png",
+      name: 'IRAN',
+      flag: '/MatchTimer/flags/iran.png',
       score: iranScore,
       onIncrease: () => setIranScore((prev) => prev + 1),
       onDecrease: () => setIranScore((prev) => Math.max(0, prev - 1)),
     },
     {
       id: 2,
-      name: "BRAZIL",
-      flag: "https://flagcdn.com/w80/br.png",
+      name: 'BRAZIL',
+      flag: '/MatchTimer/flags/brazil.png',
       score: brazilScore,
       onIncrease: () => setBrazilScore((prev) => prev + 1),
       onDecrease: () => setBrazilScore((prev) => Math.max(0, prev - 1)),
     },
-  ];
+  ]
 
   useEffect(() => {
-    if (!isRunning) return;
+    if (!isRunning) return
 
     const timer = setInterval(() => {
-      setSeconds((prev) => prev + 1);
-    }, 1000);
+      setSeconds((prev) => prev + 1)
+    }, 1000)
 
     return () => {
-      clearInterval(timer);
-    };
-  }, [isRunning]);
+      clearInterval(timer)
+    }
+  }, [isRunning])
 
   useEffect(() => {
-    localStorage.setItem("iranScore", String(iranScore));
-    localStorage.setItem("brazilScore", String(brazilScore));
-  }, [iranScore, brazilScore]);
+    localStorage.setItem('iranScore', String(iranScore))
+    localStorage.setItem('brazilScore', String(brazilScore))
+  }, [iranScore, brazilScore])
 
   useEffect(() => {
-    localStorage.setItem("seconds", String(seconds));
-  }, [seconds]);
+    localStorage.setItem('seconds', String(seconds))
+  }, [seconds])
 
   useEffect(() => {
-    localStorage.setItem("events", JSON.stringify(events));
-  }, [events]);
+    localStorage.setItem('events', JSON.stringify(events))
+  }, [events])
 
   const handleReset = () => {
-    setIranScore(0);
-    setBrazilScore(0);
-    setSeconds(0);
-    setIsRunning(false);
-  };
+    setIranScore(0)
+    setBrazilScore(0)
+    setSeconds(0)
+    setIsRunning(false)
+  }
 
   return (
     <main className="min-h-screen bg-slate-950 text-white flex items-center justify-center p-4">
@@ -151,9 +152,7 @@ function App() {
           ))}
 
           <div className="col-start-2 row-start-1 text-center">
-            <p className="text-xs uppercase tracking-widest text-slate-400">
-              Score
-            </p>
+            <p className="text-xs uppercase tracking-widest text-slate-400">Score</p>
 
             <div className="mt-2 text-4xl font-bold tabular-nums sm:text-5xl">
               {iranScore} : {brazilScore}
@@ -162,9 +161,7 @@ function App() {
         </div>
 
         <div className="my-10 rounded-2xl border border-slate-800 bg-slate-950 p-6 text-center">
-          <p className="text-xs font-medium uppercase tracking-widest sm:text-base">
-            Match Time
-          </p>
+          <p className="text-xs font-medium uppercase tracking-widest sm:text-base">Match Time</p>
 
           <p className="mt-3 font-mono text-5xl font-bold tabular-nums sm:text-6xl">
             {formattedTime}
@@ -187,7 +184,7 @@ function App() {
             onClick={() => setIsRunning((prev) => !prev)}
             className="rounded-xl bg-emerald-500 px-7 py-3 font-semibold text-white transition hover:bg-emerald-600"
           >
-            {isRunning ? "Pause" : "Start"}
+            {isRunning ? 'Pause' : 'Start'}
           </button>
         </div>
 
@@ -196,7 +193,7 @@ function App() {
         </footer>
       </section>
     </main>
-  );
+  )
 }
 
-export default App;
+export default App
